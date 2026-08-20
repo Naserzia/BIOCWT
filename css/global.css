@@ -1,0 +1,81 @@
+/* ===========================================
+              DESIGN TOKENS
+=============================================*/
+:root {
+  /* Colors */
+  --color-dark: #222021;
+  --color-light: #f5f5f5;
+
+  --color-blue: #728bad;
+  --color-blue-dark: #526e96;
+
+  --color-brown: #1e0c06;
+  --color-brown-light: #ffdbbb;
+
+  /* Semantic Colors */
+  --background-primary: var(--color-dark);
+  --background-secondary: var(--color-brown);
+
+  --text-primary: var(--color-light);
+  --text-secondary: var(--color-brown-light);
+
+  --action-primary: var(--color-blue);
+  --action-hover: var(--color-blue-dark);
+
+  /* Layout */
+  --container-width: 1440px;
+  --page-padding: 2rem;
+
+  /* Border Radius */
+  --radius-sm: 0.625rem;
+  --radius-md: 1.875rem;
+  --radius-lg: 2.5rem;
+
+  /* Headings */
+  --heading-xl: 5.625rem;
+
+  /* PADDING */
+  --section-spacing: 12.5rem;
+
+  /* Shadows */
+  --shadow-soft: 0 0 100px 5px rgba(255, 255, 255, 0.3);
+  --shadow-strong: 0 0 100px 5px rgba(255, 255, 255, 0.4);
+}
+
+/* ===========================================
+              RESET
+=============================================*/
+*::after,
+*::before,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================================
+              BASE ELEMENTS
+=============================================*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-blue-dark);
+  color: var(--text-primary);
+  font-family: "Inter", sans-serif;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ===========================================
+              Page Container
+=============================================*/
+.container {
+  width: min(100%, 1440px);
+  margin-inline: auto;
+  background-color: var(--background-primary);
+}
