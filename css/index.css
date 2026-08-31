@@ -377,11 +377,10 @@ header {
 /* ****************** About Us Section ********************* */
 .about-us-container {
   width: min(90%, var(--container-width));
+  margin-bottom: var(--section-spacing);
 
   display: grid;
   grid-template-columns: 3fr 2fr;
-
-  margin-bottom: var(--section-spacing);
 
   background-color: var(--background-secondary);
 
@@ -396,21 +395,22 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  padding: 3rem 2rem;
+  padding: clamp(2rem, 5vw, 5rem);
 }
-
 .about-us-text > h2 {
-  width: 100%;
   margin-bottom: 3rem;
+  width: 100%;
 
   text-align: center;
   text-transform: uppercase;
+
   font-size: var(--heading-xl);
   line-height: 1.5;
 }
+
 .about-us-text-content {
   width: min(100%, 32rem);
+  margin-inline: auto;
 }
 
 .about-us-text p {
@@ -428,11 +428,15 @@ header {
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+
   min-width: 0;
   padding: 3.125rem 2rem;
 }
 
 .about-us-images img {
+  max-width: 100%;
+  height: auto;
+
   object-fit: cover;
 }
 .about-us-image-1 {
@@ -440,7 +444,7 @@ header {
 }
 .about-us-image-2 {
   border: 0.5rem solid var(--background-secondary);
-  border-radius: 3.125rem;
+  border-radius: var(--radius-md);
 
   margin-bottom: 1.25rem;
 }
@@ -449,89 +453,869 @@ header {
 
 /* ****************** Contact Section ********************* */
 .contact {
+  position: relative;
+
+  width: min(100% - 4rem, 1200px);
+  margin-inline: auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 3.125rem;
-  position: relative;
 }
+
 .contact > h2 {
-  font-size: 5.625rem;
-  align-self: self-start;
+  font-size: var(--heading-xl);
+  align-self: flex-start;
 }
 
 .contact-form-content {
-  display: flex;
-  justify-content: space-between;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   padding: 2.5rem 0;
 }
+
 .contact-form-content form {
+  width: 100%;
+
   display: flex;
   flex-direction: column;
+
   gap: 0.625rem;
-  width: 546px;
 }
 .contact-form-content form input,
 .contact-form-content form textarea {
-  padding: 0.625rem 1.25rem;
+  width: 100%;
+
+  padding: 0.875rem 1.25rem;
+
   background-color: transparent;
-  border: 4px solid #728bad;
-  border-radius: 1.875rem;
+
+  border: 4px solid var(--action-primary);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+
+  font-family: inherit;
   font-size: 1.125rem;
-  color: #fff;
 }
-.contact-form-content form button {
+
+.contact-form-content button {
   align-self: flex-start;
-  background-color: #728bad;
+
+  margin-top: 1.25rem;
+  padding: 0.75rem 2.5rem;
+
   border: none;
-  color: #fff;
-  padding: 0.5rem 2.5rem;
+  border-radius: var(--radius-md);
+
+  background-color: var(--action-primary);
+  color: var(--text-primary);
+
   font-size: 1.125rem;
   font-weight: 700;
-  border-radius: 1.875rem;
-  margin-top: 1.25rem;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.contact-form-content button:hover {
+  background-color: var(--action-hover);
+}
+
+.contact-form-content button:focus-visible {
+  outline: 2px solid var(--text-secondary);
+  outline-offset: 4px;
 }
 
 .contact-form-content p {
-  color: #f5f5f5;
-  font-size: 1.875rem;
-  width: 546px;
-  margin: 0 auto;
-  margin-left: 3.125rem;
+  margin: 0;
   text-align: center;
+
+  color: var(--text-primary);
+
+  font-size: 1.875rem;
+  line-height: 1.5;
 }
+
 .contact img {
   position: absolute;
-  width: 447px;
-  bottom: -11.25rem;
+
+  width: 27.937rem;
+
   right: 2.5rem;
+  bottom: -11.25rem;
 }
 /* ****************** END Contact Section ********************* */
 
 /* Footer Section */
 footer {
   position: relative;
-  background-color: #222021;
+  z-index: 1;
+
   display: flex;
   flex-direction: column;
-  padding: 2.5rem;
+
+  padding: clamp(2rem, 5vw, 3.125rem);
+
+  background-color: var(--background-primary);
+
   box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
-  z-index: 999;
 }
+
 .footer-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  gap: 2rem;
 }
 .footer-content img {
-  width: 197px;
+  width: clamp(8rem, 15vw, 12.3125rem);
 }
-footer a {
-  text-decoration: none;
-  color: #fff;
+
+.footer-content p {
+  max-width: 20rem;
+  line-height: 1.5;
+}
+
+.policy {
+  align-self: flex-start;
   margin-top: 2.5rem;
+
+  color: var(--text-primary);
+  text-decoration: none;
+
+  transition: color 0.2s ease;
 }
-footer a:hover {
+.policy:hover {
   color: #728bad;
 }
+
+.policy:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 4px;
+}
 /* END Footer Section */
+
+/* ************************************************
+                  RESPONSIVE DESIGN
+************************************************* */
+
+/* =================================================
+   LARGE DESKTOP
+   1201px +
+================================================= */
+
+@media (min-width: 1201px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* =================================================
+   LAPTOP
+   1200px
+================================================= */
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 15px;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    margin-bottom: 10rem;
+    background-size: contain;
+  }
+
+  .hero-content {
+    width: 90%;
+    padding: 1.25rem 3rem;
+  }
+
+  .hero-left {
+    padding: 1rem 1.5rem;
+  }
+
+  .hero-left-text h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-image {
+    width: 180px;
+  }
+
+  /* ---------- NAVIGATION ---------- */
+
+  .nav-content {
+    gap: 2.5rem;
+  }
+
+  /* ---------- WORK ---------- */
+
+  .work-container {
+    width: min(90%, 1100px);
+  }
+
+  .work-title {
+    width: 80%;
+  }
+
+  .cards {
+    gap: 2.5rem;
+  }
+
+  .wood-info {
+    font-size: 1.6rem;
+  }
+
+  /* ---------- CAROUSEL ---------- */
+
+  .work-carousel {
+    width: min(90%, 950px);
+  }
+
+  .btn-carousel-left {
+    left: -3rem;
+  }
+
+  .btn-carousel-right {
+    right: -3rem;
+  }
+
+  /* ---------- CTA ---------- */
+
+  .cta {
+    width: min(90%, 1100px);
+  }
+
+  .cta-content {
+    gap: 3rem;
+  }
+
+  .cta-content p {
+    font-size: 1.6rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+
+  .about-us-container {
+    width: 90%;
+  }
+
+  /* ---------- CONTACT ---------- */
+
+  .contact {
+    width: min(90%, 1100px);
+  }
+}
+
+/* =================================================
+   TABLET LANDSCAPE / SMALL LAPTOP
+   992px
+================================================= */
+
+@media (max-width: 992px) {
+  html {
+    font-size: 14px;
+  }
+  header {
+    padding: 1.5rem 2rem;
+  }
+  .logo {
+    width: 125px;
+  }
+
+  .nav-content {
+    gap: 1.75rem;
+  }
+  .nav-links {
+    font-size: 1rem;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 800px;
+    margin-bottom: 5rem;
+  }
+  .hero-content {
+    width: 94%;
+    padding: 1.5rem 2.5rem;
+  }
+  .hero-left-text h1 {
+    font-size: 3.25rem;
+  }
+  .hero-left-text p {
+    font-size: 1.1rem;
+  }
+
+  .hero-image {
+    width: 155px;
+  }
+
+  /* Work */
+  .about-work {
+    width: 90%;
+  }
+
+  .work-title {
+    width: 90%;
+  }
+
+  .work-title > h2,
+  .carousel-section > h2,
+  .cta > h2,
+  .about-us-text > h2,
+  .contact > h2 {
+    font-size: 4.5rem;
+  }
+  .cards {
+    gap: 2rem;
+  }
+  .cards img {
+    width: 175px;
+  }
+  .wood-type {
+    font-size: 1.7rem;
+  }
+  .wood-info {
+    font-size: 1.4rem;
+  }
+
+  /* CAROUSEL */
+
+  .carousel-section {
+    margin-bottom: 5rem;
+  }
+
+  .work-carousel {
+    width: 85%;
+  }
+
+  .work-carousel button {
+    font-size: 2.5rem;
+  }
+  .btn-carousel-left {
+    left: -2.75rem;
+  }
+  .btn-carousel-right {
+    right: -2.75rem;
+  }
+
+  /* CTA */
+  .cta {
+    width: 90%;
+    margin-bottom: 5rem;
+  }
+
+  .cta > h2 {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-content {
+    gap: 2rem;
+  }
+
+  .cta-content p {
+    font-size: 1.4rem;
+  }
+
+  .cta-info {
+    gap: 1.75rem;
+  }
+
+  .cta-button {
+    font-size: 1.5rem;
+  }
+
+  /* ABOUT US */
+
+  .about-us-container {
+    width: 94%;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-us-text {
+    padding: 3rem 2rem;
+  }
+  .about-us-text > h2 {
+    margin-bottom: 2rem;
+  }
+  .about-us-text p {
+    margin-bottom: 1.4rem;
+  }
+  .about-us-images {
+    padding: 2rem 1.5rem;
+  }
+
+  /* CONTACT */
+  .contact {
+    width: 90%;
+  }
+  .contact-form-content {
+    gap: 2rem;
+  }
+  .contact-form-content p {
+    font-size: 1.5rem;
+  }
+
+  .contact img {
+    width: 20rem;
+    right: 1rem;
+    bottom: -9rem;
+  }
+
+  /* FOOTER */
+
+  footer {
+    padding: 2.5rem;
+  }
+}
+
+/* =================================================
+   TABLET PORTRAIT
+   768px
+================================================= */
+
+@media (max-width: 768px) {
+  html {
+    font-size: 13px;
+  }
+
+  /* Header */
+  header {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .logo {
+    width: 110px;
+  }
+
+  .nav-content {
+    gap: 1.25rem;
+  }
+
+  .nav-links {
+    font-size: 0.95rem;
+  }
+
+  /* **********************HERO****************************** */
+  .hero {
+    min-height: auto;
+    padding-bottom: 5rem;
+    margin-bottom: 3rem;
+  }
+  .hero-content {
+    width: 92%;
+    margin-top: 2.5rem;
+
+    margin-bottom: 0;
+    padding: 2rem;
+  }
+  .hero-left-text h1 {
+    font-size: 2.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-left-text p {
+    font-size: 1rem;
+  }
+
+  .hero-left-text p span {
+    font-size: 1.2rem;
+  }
+
+  .hero-left a {
+    margin-top: 1.5rem;
+  }
+
+  .hero-image {
+    width: 130px;
+  }
+
+  /* **********************WORK****************************** */
+
+  .work-container {
+    width: 90%;
+    margin-bottom: 5rem;
+  }
+  .work-title {
+    width: 100%;
+  }
+  .work-title > h2,
+  .carousel-section > h2,
+  .cta > h2,
+  .about-us-text > h2,
+  .contact > h2 {
+    font-size: 3.75rem;
+  }
+
+  .work-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem 2rem;
+  }
+  .cards img {
+    width: 160px;
+  }
+
+  .wood-type {
+    font-size: 1.5rem;
+  }
+
+  .wood-info {
+    font-size: 1.3rem;
+  }
+
+  /* **********************CAROUSEL****************************** */
+
+  .carousel-section {
+    margin-bottom: 3rem;
+  }
+
+  .work-carousel button {
+    font-size: 2.5rem;
+    padding: 0.5rem;
+  }
+  .btn-carousel-left {
+    left: -2.5rem;
+  }
+  .btn-carousel-right {
+    right: -2.5rem;
+  }
+
+  .indicator-circle {
+    width: 20px;
+  }
+
+  /* **********************CTA****************************** */
+  .cta {
+    width: 90%;
+    margin-bottom: 3rem;
+  }
+
+  .cta > h2 {
+    padding: 1rem;
+    text-align: center;
+  }
+  .cta-content {
+    gap: 2rem;
+  }
+
+  .cta-content img {
+    width: 48%;
+  }
+  .cta-info {
+    gap: 1.5rem;
+  }
+
+  .cta-content p {
+    font-size: 1.3rem;
+  }
+
+  .cta-button {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    padding-inline: 2.5rem;
+  }
+
+  /* **********************ABOUT US****************************** */
+  .about-us-container {
+    width: 92%;
+    grid-template-columns: 1fr 1fr;
+
+    margin-bottom: 3rem;
+  }
+
+  .about-us-text {
+    padding: 2.5rem 1.75rem;
+  }
+
+  .about-us-text p {
+    font-size: 1.5rem;
+  }
+
+  .about-us-images {
+    padding: 2rem 1rem;
+  }
+
+  /* **********************ABOUT US****************************** */
+  .contact {
+    width: 90%;
+  }
+
+  .contact-form-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .contact-form-content p {
+    font-size: 1.4rem;
+    margin-bottom: 5rem;
+  }
+
+  .contact img {
+    width: 17rem;
+    right: 0;
+    bottom: -8rem;
+  }
+
+  /* **********************Footer****************************** */
+  .footer-content {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .footer-content img {
+    width: 10rem;
+  }
+}
+/* =================================================
+   PHONE / SMALL SCREEN
+   630px
+================================================= */
+
+@media (max-width: 630px) {
+  html {
+    font-size: 11px;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .logo {
+    width: 100px;
+  }
+
+  .nav-content {
+    justify-content: center;
+
+    flex-wrap: wrap;
+    padding: 1rem 1.5rem;
+  }
+  .nav-links {
+    font-size: 1rem;
+  }
+
+  /* ************************* HERO *******************************************/
+  .hero {
+    padding-bottom: 3rem;
+    background-size: cover;
+  }
+
+  .hero-content {
+    width: 94%;
+
+    margin-top: 2rem;
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-left {
+    padding: 1rem 0 1.5rem;
+
+    border-right: none;
+
+    border-bottom: 1px solid var(--text-primary);
+  }
+
+  .hero-left-text h1 {
+    font-size: 3rem;
+  }
+
+  .hero-right {
+    padding: 1.5rem 0 0;
+  }
+
+  .image-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 0.75rem;
+  }
+  .hero-image {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+
+  /* ************************* WORK *******************************************/
+  .work-container {
+    margin-bottom: 3rem;
+  }
+  .work-title > h2,
+  .carousel-section > h2,
+  .cta > h2,
+  .about-us-text > h2,
+  .contact > h2 {
+    font-size: 3rem;
+  }
+
+  .work-title > h2 {
+    margin-bottom: 3rem;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .work-content {
+    align-items: center;
+  }
+
+  .cards img {
+    width: 180px;
+  }
+  .wood-type {
+    font-size: 1.7rem;
+  }
+  .wood-info {
+    font-size: 1.4rem;
+  }
+
+  /* ************************* CAROUSEL *******************************************/
+
+  .carousel-section {
+    margin-bottom: 4rem;
+  }
+
+  .work-carousel {
+    width: 90%;
+  }
+
+  .work-carousel button {
+    font-size: 2rem;
+  }
+
+  .btn-carousel-left {
+    left: -2rem;
+  }
+  .btn-carousel-right {
+    right: -2rem;
+  }
+
+  .indicator-circle {
+    width: 18px;
+  }
+
+  /* ************************* CTA *******************************************/
+
+  .cta {
+    margin-bottom: 4rem;
+  }
+
+  .cta > h2 {
+    padding: 0;
+    margin-bottom: 3rem;
+  }
+
+  .cta-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .cta-content img {
+    width: 100%;
+  }
+
+  .cta-info {
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .cta-content p {
+    font-size: 1.4rem;
+  }
+  .cta-button {
+    width: 100%;
+
+    padding: 0.9rem 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  /* ************************* ABOUT US *******************************************/
+
+  .about-us-container {
+    width: 94%;
+    grid-template-columns: 1fr;
+    margin-bottom: 4rem;
+  }
+
+  .about-us-text {
+    padding: 3rem 2rem;
+  }
+
+  .about-us-text > h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .about-us-text p {
+    text-align: center;
+  }
+
+  .about-us-images {
+    padding: 1rem 1.5rem 3rem;
+    align-items: center;
+  }
+  .about-us-images img {
+    width: 70%;
+  }
+
+  .about-us-image-1 {
+    margin-bottom: auto;
+  }
+
+  /* ************************* CONTACT *******************************************/
+
+  .contact {
+    width: 94%;
+  }
+
+  .contact > h2 {
+    align-self: center;
+    text-align: center;
+  }
+
+  .contact-form-content button {
+    width: 100%;
+  }
+
+  .contact img {
+    position: relative;
+    width: 15rem;
+    right: auto;
+    bottom: auto;
+
+    align-self: flex-end;
+    margin-top: 0;
+  }
+
+  .contact-form-content p {
+    margin-bottom: 1rem;
+  }
+
+  /* ************************* FOOTER *******************************************/
+
+  footer {
+    padding: 2rem 1.5rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .policy {
+    display: block;
+    align-self: center;
+  }
+}
